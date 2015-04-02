@@ -39,6 +39,10 @@ module PuppetTwitch
     response
   end
 
+  http_server.endpoint '/version' do
+    [200, PuppetTwitch::VERSION]
+  end
+
   http_server.endpoint '/info' do
     [200, 'Puppet Twitch - A simple endpoint for triggering puppet']
   end

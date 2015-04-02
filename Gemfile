@@ -1,9 +1,10 @@
 source 'https://rubygems.org/'
 
-gem 'daemons', '~> 1.2.2'
+gemspec
 
 group :development do
   gem 'puppet'
+  gem 'rake'
 end
 
 group :test do

@@ -10,5 +10,8 @@
 .ruby-gemset
 Gemfile.lock
 
+# gems
+pkg
+
 # Daemons
-#run
+run

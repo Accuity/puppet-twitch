@@ -1,5 +1,12 @@
 module PuppetTwitch
 
+  # Logger just prints to STDOUT.
+  # When the server is running in the foreground (not Daemonized),
+  # all output is visible in the terminal.
+  # When the server is running as a Daemon,
+  # STDOUT is redirected to a logfile,
+  # so this simple logger works for both scenarios
+
   class Logger
 
     DEBUG = 0

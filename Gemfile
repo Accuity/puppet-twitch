@@ -1,5 +1,7 @@
 source 'https://rubygems.org/'
 
+gem 'daemons', '~> 1.2.2'
+
 group :development do
   gem 'puppet'
 end

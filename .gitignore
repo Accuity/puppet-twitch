@@ -1,0 +1,10 @@
+# IntelliJ
+.idea
+*.iml
+
+# Vagrant
+.vagrant
+
+# Ruby and rvm
+.ruby-version
+.ruby-gemset

@@ -1,0 +1,17 @@
+{
+    "nodes": {
+        "puppet.example.com": {
+            "ip": "192.168.10.10",
+            "ports": [8140],
+            "role" : "master"
+        },
+        "node01.example.com": {
+            "ip": "192.168.10.11",
+            "ports": [2023]
+        },
+        "node02.example.com": {
+            "ip": "192.168.10.12",
+            "ports": [2023]
+        }
+    }
+}

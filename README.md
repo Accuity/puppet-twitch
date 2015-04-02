@@ -2,7 +2,7 @@
 
 Puppet Twitch provides a lightweight http interface for remotely triggering puppet runs. That's it! The plan was to not use more resources than it had to, and also not open up any security holes.
 
-Currently this project is definitely in the beta phase, there are probably a few kinks to work out, and it's worth highlighting that at the moment **puppet twitch doesn't use a "proper" http server**, it's just a TCP socket with an http shaped regex. This makes it lightweight, but there might be a whole bunch of compatablity/security issues with it, so I'm looking to swap that out (see ToDo section)
+Currently this project is definitely in the beta phase, there are probably a few kinks to work out, and it's worth highlighting that at the moment **puppet twitch doesn't use a "proper" http server**, it's just a TCP socket with an http shaped regex. This makes it lightweight, but there might be a whole bunch of compatibility/security issues with it, so I'm looking to swap that out (see ToDo section)
 
 ### Triggering puppet
 
@@ -10,7 +10,7 @@ To trigger a puppet run on a node running puppet-twitch, simply hit the `/puppet
 
 `$ curl http://node01.example.com:2023/puppet/twitch`
 
-Puppet-twitch will repond with one of the following (`<status code>, <body>`):
+Puppet-twitch will respond with one of the following (`<status code>, <body>`):
  - `202, Triggered puppet run` - The puppet run has been triggered asynchronously
  - `409, Puppet already running` - Either the server is already processing a request, or puppet's lock file exists indicating the agent is already running
  - `500, <error message>` - Something went wrong!
@@ -34,12 +34,12 @@ To use the defaults on Linux, simply `include twitch`. This will:
  - Install the gem
  - Start the server as the `twitch` user on the default port (2023)
 
-The `twitch` class is parametized, so user, port, run directory, etc can be configured if necessary
+The `twitch` class is parameterized, so user, port, run directory, etc can be configured if necessary
 
 ##### Prerequisites
  - **ruby 1.9.3** or above as `require_relative` isn't supported by lower versions
- - Open the port to incomming connections, the `twitch` module will not change any network configuration.
- - Add `/etc/sudoers.d` to the `sudoers` file. This is a common configuration and is done by default on some VMs (e.g.Vagrant boxes, EC2 insances) but the `twitch` module assumes this is already setup.
+ - Open the port to incoming connections, the `twitch` module will not change any network configuration.
+ - Add `/etc/sudoers.d` to the `sudoers` file. This is a common configuration and is done by default on some VMs (e.g.Vagrant boxes, EC2 instances) but the `twitch` module assumes this is already setup.
 
 ### Manual Install:
 
@@ -64,7 +64,7 @@ And then stop it
  - Create a run directory for pids and logs (writable by the user)
 
 ##### Args:
- - `dir`: Absolute path for directory that will store the pids and logs. **The direcory must be manually created and must be writable by the user that is running the server**. It must be provided for every action (`start`/`stop`/`status` etc), there is a ToDo to fix this
+ - `dir`: Absolute path for directory that will store the pids and logs. **The directory must be manually created and must be writable by the user that is running the server**. It must be provided for every action (`start`/`stop`/`status` etc), there is a ToDo to fix this
  - `bind`: The IP address to bind to, defaults to `0.0.0.0`
  - `port`: The port to listen on, defaults to `2023`
 
@@ -89,7 +89,7 @@ To test in a more isolated environment you can use vagrant, just spin up the box
 [vagrant@node01] $ curl http://localhost:2023/puppet/twitch
 ```
 
-The puppet class that's applied to the nodes (`twitch::test::vagrant`) inherts from the normal `twitch` class but also:
+The puppet class that's applied to the nodes (`twitch::test::vagrant`) inherits from the normal `twitch` class but also:
  - Gives the `twitch` user a password (set to `twitch`) and a shell (`/bin/bash`) so you can switch to the `twitch` user for debugging
  - Installs the gem from the project's `pkg` directory that is mounted by vagrant, rather than downloading the gem from rubygems
 

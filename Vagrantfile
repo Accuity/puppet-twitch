@@ -24,7 +24,11 @@ Vagrant.configure(2) do |config|
       open_ports(node_config['ports'], node)
 
       if node_config['role'] == 'master'
+        node.vm.synced_folder './puppet', '/etc/puppet'
         node.vm.provision :shell, inline: 'sudo puppet master'
+      else
+        node.vm.synced_folder './lib', '/opt/puppet-twitch/lib'
+        node.vm.synced_folder './pkg', '/opt/puppet-twitch/pkg'
       end
 
     end

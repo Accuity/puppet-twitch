@@ -5,12 +5,13 @@ nodes = (JSON.parse(File.read('nodes.json')))['nodes']
 
 Vagrant.configure(2) do |config|
 
-  config.vm.box = 'puppetlabs/centos-7.0-64-puppet'
+  config.vm.box = 'puppetlabs/centos-7.0-64-puppet' # version 1.0.1
 
   nodes.each do |fqdn, node_config|
 
     # Use hostname instead of fqdn so vagrant commands are easier to type
     hostname = fqdn.split('.')[0]
+    config.ssh.insert_key = false
     config.vm.define hostname do |node|
 
       node.vm.hostname = fqdn

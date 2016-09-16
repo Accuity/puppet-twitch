@@ -1,8 +1,3 @@
-#node default {
-#  include twitch::test::vagrant
-#  include test
-#}
-
 node 'haproxy' {
   include profile::haproxy
 }

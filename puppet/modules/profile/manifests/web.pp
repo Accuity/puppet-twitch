@@ -5,15 +5,15 @@ class profile::web {
     class { 'nginx': }
 
     file { 'webroot':
-        path => $webroot_path,
+        path   => $webroot_path,
         ensure => directory,
     }
 
     file { 'index':
-        path => "$webroot_path/index.html",
+        path    => "$webroot_path/index.html",
         content => "<html><body>Hello World from $::hostname</body></html>",
-        owner => 'nginx',
-        group => 'nginx',
+        owner   => 'nginx',
+        group   => 'nginx',
     }
 
     nginx::resource::vhost { 'web':
@@ -22,4 +22,7 @@ class profile::web {
     }
 
     Nginx::Resource::Vhost['web'] -> File['webroot'] -> File['index']
+
+    # nginx/templates/vhost/vhost_location_directory.erb
+    # <% if !try_files.nil? && try_files != :undef then %>
 }

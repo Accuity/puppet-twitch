@@ -5,7 +5,8 @@ nodes = (JSON.parse(File.read('nodes.json')))['nodes']
 
 Vagrant.configure(2) do |config|
 
-  config.vm.box = 'puppetlabs/centos-7.0-64-puppet' # version 1.0.1
+  config.vm.box = 'puppetlabs/centos-7.0-64-puppet'
+  config.vm.box_version = '1.0.1'
 
   nodes.each do |fqdn, node_config|
 
@@ -27,9 +28,6 @@ Vagrant.configure(2) do |config|
       if node_config['role'] == 'master'
         node.vm.synced_folder './puppet', '/etc/puppet'
         node.vm.provision :shell, inline: 'sudo puppet master'
-      else
-        node.vm.synced_folder './lib', '/opt/puppet-twitch/lib'
-        node.vm.synced_folder './pkg', '/opt/puppet-twitch/pkg'
       end
 
     end

@@ -27,7 +27,7 @@ Vagrant.configure(2) do |config|
 
       if node_config['role'] == 'master'
         node.vm.synced_folder './puppet', '/etc/puppet'
-        node.vm.provision :shell, inline: 'sudo puppet master'
+        node.vm.provision :shell, inline: 'puppet master'
       end
 
     end

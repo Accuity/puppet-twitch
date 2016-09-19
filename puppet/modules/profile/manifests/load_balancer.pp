@@ -1,10 +1,10 @@
-class profile::haproxy {
+class profile::load_balancer {
 
-    include ::haproxy
+    class { '::haproxy': }
 
     haproxy::listen { 'dug':
         collect_exported => false,
-        ipaddress        => $::ipaddress,
+        ipaddress        => '0.0.0.0',
         ports            => '80',
     }
 

@@ -23,6 +23,7 @@ class profile::web {
 
     Nginx::Resource::Vhost['web'] -> File['webroot'] -> File['index']
 
+    # Fix error in nginx module
     # nginx/templates/vhost/vhost_location_directory.erb
     # <% if !try_files.nil? && try_files != :undef then %>
 }

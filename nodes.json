@@ -16,6 +16,22 @@
         "haproxy.example.com": {
             "ip": "192.168.10.20",
             "ports": [80, 8080]
+        },
+        "consul1.example.com": {
+            "ip": "192.168.10.30",
+            "ports": [8500]
+        },
+        "consul2.example.com": {
+            "ip": "192.168.10.31",
+            "ports": [8500]
+        },
+        "consul3.example.com": {
+            "ip": "192.168.10.32",
+            "ports": [8500]
+        },
+        "consulclient1.example.com": {
+            "ip": "192.168.10.40",
+            "ports": [8500]
         }
     }
 }
